@@ -7,9 +7,16 @@
     <title>Checklist</title>
 </head>
 <body>
+    <h1>Checklist</h1>
+    <h2>Lista de tarefas</h2>
     <div id="taskView"></div>
-    <script src="js/TaskModel.js"></script>
-    <script src="js/ChecklistModel.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/models/TaskModel.js"></script>
+    <script src="js/models/ChecklistModel.js"></script>
+    <script src="js/views/ChecklistView.js"></script>
+    <script src="js/controllers/ViewController.js"></script>
+    <script>
+        let controller = new ViewController();
+        controller.updateView();
+    </script>
 </body>
 </html>

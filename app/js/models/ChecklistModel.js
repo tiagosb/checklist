@@ -21,6 +21,7 @@ class ChecklistModel {
         }
         this._taskList[index].setDescription = newDescription;
         this._taskList[index].setStatus = newStatus;
+        return true;
     }
     ;
     removeTask(id) {

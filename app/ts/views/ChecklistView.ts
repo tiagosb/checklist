@@ -14,7 +14,10 @@ class ChecklistView{
                 ${taskList.map(task=>
                     {
                         return `
-                            <li>${task.getDescription}</li>
+                            <li>
+                                <input type="checkbox" ${task.getStatus ? 'checked' : ''}/>
+                                ${task.getDescription}
+                            </li>
                         `
                     }
                 ).join('')}

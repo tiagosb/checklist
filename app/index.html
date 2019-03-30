@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Checklist</h1>
+    
+    <form onsubmit="viewController.newTask(event)">
+        <label for="inputDescription">Nova tarefa</label>
+        <input type="text" id="inputDescription" placeholder="Descrição..">
+        <input type="submit" value="Adicionar">
+    </form>
+
     <h2>Lista de tarefas</h2>
     <div id="taskView"></div>
     <script src="js/models/TaskModel.js"></script>
@@ -15,8 +22,8 @@
     <script src="js/views/ChecklistView.js"></script>
     <script src="js/controllers/ViewController.js"></script>
     <script>
-        let controller = new ViewController();
-        controller.updateView();
+        let viewController = new ViewController();
+        viewController.updateView();
     </script>
 </body>
 </html>

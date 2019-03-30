@@ -5,13 +5,26 @@ class ViewController {
         this._testSeed();
     }
     updateView() {
-        let html = this._checkListView.renderTemplate(this._checkListModel.taskList);
-        console.log(html);
+        this._checkListView.renderTemplate(this._checkListModel.taskList);
     }
     _testSeed() {
         this._checkListModel.addTask('Tarefa 1');
+        let t1Id = this._checkListModel.taskList[0].getId;
+        this._checkListModel.alterTask(t1Id, 'Tarefa 1', true);
         this._checkListModel.addTask('Tarefa 2');
         this._checkListModel.addTask('Tarefa 3');
         this._checkListModel.addTask('Tarefa 4');
+    }
+    newTask(event) {
+        event.preventDefault();
+        this._checkListModel.addTask(this._getInputDescription());
+        this.updateView();
+    }
+    _getInputDescription() {
+        let inputDescription = document.getElementById('inputDescription');
+        let taskDescription = inputDescription.value;
+        inputDescription.value = '';
+        inputDescription.focus();
+        return taskDescription;
     }
 }

@@ -16,10 +16,10 @@ class ChecklistView{
                     {
                         return `
                             <li>
-                                <input type="checkbox" ${task.getStatus ? 'checked' : ''}/>
-                                ${task.getDescription}
-                                <button class="btn-remove" id="${task.getId}">Remover</button>
-                                <button class="btn-alter" id="${task.getId}">Alterar</button>
+                                <input type="checkbox" ${task.status ? 'checked' : ''}/>
+                                ${task.description}
+                                <button class="btn-remove" id="${task.id}">Remover</button>
+                                <button class="btn-alter" id="${task.id}">Alterar</button>
                             </li>
                         `
                     }

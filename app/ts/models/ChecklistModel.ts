@@ -11,28 +11,35 @@ class ChecklistModel
     {   
         try
         {
-            let id = this._uid();
-            let newTask = new TaskModel(description, id);
-            this._taskList.push( newTask );
+            this._taskList.push( new TaskModel(description, this._uid()) );
             return true;
         }
-        catch(Error)
+        catch(error)
         {
-            console.log(Error);
+            console.log(error);
             return false;
         }
     }
    
     public alterTask(id: string, newDescription: string, newStatus: boolean): boolean
     {
-        let index = this._indexOf(id);
-        if( index < 0 )
+        console.log('Alter task');
+        try
         {
+            let index = this._indexOf(id);
+            if(index < 0)
+            { 
+                throw new Error("Can't alter task, index error, value="+index);
+            }
+            this._taskList[index].description = newDescription;
+            this._taskList[index].status = newStatus; 
+            return true;
+        }
+        catch(error)
+        {
+            console.log(error);
             return false;
         }
-        this._taskList[index].setDescription = newDescription;
-        this._taskList[index].setStatus = newStatus; 
-        return true;
     };
     
     public removeTask(id: string):boolean
@@ -41,12 +48,13 @@ class ChecklistModel
         {
             let newList = this._taskList.filter(task =>
                 {
-                    return !(task.getId === id)
+                    return !(task.id === id)
                 });
-            if( newList )
+            if(!newList)
             {
-                this._taskList = newList;
+                throw new Error("Can't remove the task");
             }
+            this._taskList = newList;
             return true;
         }
         catch(Error)
@@ -60,7 +68,7 @@ class ChecklistModel
     {
         for(let index = 0; index < this._taskList.length; index++)
         {
-            if( this._taskList[index].getId === id )
+            if( this._taskList[index].id === id )
             {
                 return index;
             }
@@ -78,9 +86,25 @@ class ChecklistModel
         return this._taskList;
     }
 
-    public getTaskById(id:string)
+    public getTaskById(id:string):any
     {
-        let index = this._indexOf(id);
-        return this.taskList[index];
+        try
+        {
+            let index = this._indexOf(id);
+            return this.taskList[index];
+        }
+        catch(error)
+        {
+            console.log(error);
+            return false
+        }
+    }
+
+    public taskStatusChange(id:string)
+    {
+        let task = this.getTaskById(id);
+        let status = task.status ? false : true;
+        this.alterTask(id, task.description, status);
+        console.log(this._taskList);
     }
 }

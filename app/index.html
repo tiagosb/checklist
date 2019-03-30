@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Checklist</title>
 </head>
 <body>
-    <h1>Checklist</h1>
-    
-    <form onsubmit="viewController.newTask(event)">
-        <label for="inputDescription">Nova tarefa</label>
-        <input type="text" id="inputDescription" placeholder="Descrição.." required>
-        <input type="submit" value="Adicionar">
-    </form>
+    <div class="container">
 
-    <h2>Lista de tarefas</h2>
-    <div id="taskView" onclick="viewController.action(event)"></div>
+        <h1 class="padding">Checklist</h1>
+        
+        <div class="padding">
+            <form onsubmit="viewController.newTask(event)">
+                <label for="inputDescription">Nova tarefa</label>
+                <input type="text" id="inputDescription" placeholder="Descrição.." required>
+                <input type="submit" value="Adicionar">
+            </form>
+        </div>
+    
+        <div class="padding">
+            <h2>Lista de tarefas</h2>
+            <div id="taskView" onclick="viewController.action(event)"></div>
+        </div>
+    </div>
 
     <script src="js/models/TaskModel.js"></script>
     <script src="js/models/ChecklistModel.js"></script>

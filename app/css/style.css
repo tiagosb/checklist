@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+h1{
+    font-weight: bolder;
+    font-size: 200%;
+}
+h2{
+    font-weight: bold;
+    font-size: 150%;
+}
+
+li{
+    margin-bottom: 1rem;
+    border-bottom: 1px solid lightgray;
+    overflow: hidden;
+}
+li:first-child{
+    margin-top: 1rem
+}
+li button{
+    float: right;
+    margin-left: 1rem
+}
+li input{
+    float: left;
+    margin-right: 1rem
+}
+.padding{
+    padding:1.5rem
+}
+.container{
+    width: 60%;
+    margin: 0 auto;
+}

@@ -18,7 +18,7 @@ class ViewController{
     private _testSeed()
     {
         this._checkListModel.addTask('Tarefa 1');
-        let t1Id = this._checkListModel.taskList[0].getId;
+        let t1Id = this._checkListModel.taskList[0].id;
         this._checkListModel.alterTask(t1Id, 'Tarefa 1', true);
         this._checkListModel.addTask('Tarefa 2');
         this._checkListModel.addTask('Tarefa 3');
@@ -45,8 +45,14 @@ class ViewController{
     public action(event)
     {
         let target = event.target;
+        //Checkbox event, change task status
+        if(target.tagName.toUpperCase() === 'INPUT')
+        {
+            console.log('Change status.');
+
+        }
         //If target contains the class bnt-remove then action is remove task
-        if(target.classList.contains('btn-remove'))
+        else if(target.classList.contains('btn-remove'))
         {
             //Confirm the action
             if(this._checkListView.confirmRemove())
@@ -58,12 +64,13 @@ class ViewController{
         //class btn-alter -> action alter task
         else if(target.classList.contains('btn-alter'))
         {
+            console.log('Alter task');
             let id = target.id;
             let task = this._checkListModel.getTaskById(id);
-            let newDescription = this._checkListView.alterTaskForm(task.getDescription);
+            let newDescription = this._checkListView.alterTaskForm(task.description);
             if(newDescription)
             {
-                this._checkListModel.alterTask(task.getId, newDescription, task.getStatus);
+                this._checkListModel.alterTask(task.id, newDescription, task.status);
             }            
             this.updateView();
         }

@@ -11,12 +11,13 @@
     
     <form onsubmit="viewController.newTask(event)">
         <label for="inputDescription">Nova tarefa</label>
-        <input type="text" id="inputDescription" placeholder="Descrição..">
+        <input type="text" id="inputDescription" placeholder="Descrição.." required>
         <input type="submit" value="Adicionar">
     </form>
 
     <h2>Lista de tarefas</h2>
-    <div id="taskView"></div>
+    <div id="taskView" onclick="viewController.action(event)"></div>
+
     <script src="js/models/TaskModel.js"></script>
     <script src="js/models/ChecklistModel.js"></script>
     <script src="js/views/ChecklistView.js"></script>

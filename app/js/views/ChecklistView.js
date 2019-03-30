@@ -3,6 +3,7 @@ class ChecklistView {
         this._view = document.querySelector('#taskView');
     }
     _template(taskList) {
+        //!important! class btn-remove used to identify the remove button
         return `
             <ul>
                 ${taskList.map(task => {
@@ -10,6 +11,7 @@ class ChecklistView {
                             <li>
                                 <input type="checkbox" ${task.getStatus ? 'checked' : ''}/>
                                 ${task.getDescription}
+                                <button class="btn-remove" id="${task.getId}">Remover</button>
                             </li>
                         `;
         }).join('')}

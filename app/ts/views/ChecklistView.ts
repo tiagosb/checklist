@@ -9,6 +9,7 @@ class ChecklistView{
 
     private _template(taskList: TaskModel[]):string
     {
+        //!important! class btn-remove used to identify the remove button
         return `
             <ul>
                 ${taskList.map(task=>
@@ -17,6 +18,7 @@ class ChecklistView{
                             <li>
                                 <input type="checkbox" ${task.getStatus ? 'checked' : ''}/>
                                 ${task.getDescription}
+                                <button class="btn-remove" id="${task.getId}">Remover</button>
                             </li>
                         `
                     }

@@ -41,4 +41,14 @@ class ViewController{
         inputDescription.focus();
         return taskDescription;
     }
+    
+    public action(event)
+    {
+        //If target contains the class bnt-remove then action is remove task
+        if(event.target.classList.contains('btn-remove'))
+        {
+            this._checkListModel.removeTask(event.target.id);
+            this.updateView();
+        }
+    }
 }

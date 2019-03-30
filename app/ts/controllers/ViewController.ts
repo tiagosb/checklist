@@ -44,10 +44,27 @@ class ViewController{
     
     public action(event)
     {
+        let target = event.target;
         //If target contains the class bnt-remove then action is remove task
-        if(event.target.classList.contains('btn-remove'))
+        if(target.classList.contains('btn-remove'))
         {
-            this._checkListModel.removeTask(event.target.id);
+            //Confirm the action
+            if(this._checkListView.confirmRemove())
+            {
+                this._checkListModel.removeTask(target.id);
+                this.updateView();
+            }
+        }
+        //class btn-alter -> action alter task
+        else if(target.classList.contains('btn-alter'))
+        {
+            let id = target.id;
+            let task = this._checkListModel.getTaskById(id);
+            let newDescription = this._checkListView.alterTaskForm(task.getDescription);
+            if(newDescription)
+            {
+                this._checkListModel.alterTask(task.getId, newDescription, task.getStatus);
+            }            
             this.updateView();
         }
     }

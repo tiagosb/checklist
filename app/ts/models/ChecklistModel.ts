@@ -77,4 +77,10 @@ class ChecklistModel
     {
         return this._taskList;
     }
+
+    public getTaskById(id:string)
+    {
+        let index = this._indexOf(id);
+        return this.taskList[index];
+    }
 }

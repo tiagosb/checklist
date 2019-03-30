@@ -12,6 +12,7 @@ class ChecklistView {
                                 <input type="checkbox" ${task.getStatus ? 'checked' : ''}/>
                                 ${task.getDescription}
                                 <button class="btn-remove" id="${task.getId}">Remover</button>
+                                <button class="btn-alter" id="${task.getId}">Alterar</button>
                             </li>
                         `;
         }).join('')}
@@ -20,5 +21,11 @@ class ChecklistView {
     }
     renderTemplate(taskList) {
         this._view.innerHTML = this._template(taskList);
+    }
+    alterTaskForm(description) {
+        return prompt('Descrição:', description);
+    }
+    confirmRemove() {
+        return confirm('Excluir a tarefa?');
     }
 }
